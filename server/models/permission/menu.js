@@ -29,6 +29,10 @@ const menuSchema = new Schema({
   redirectTo: String,
   level: Number,
   remark: String,
+  group_ids: {
+    type: Array,
+    required: true
+  }
 })
 
 module.exports = mongoose.model('Menu', menuSchema, 'menu')

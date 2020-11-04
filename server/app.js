@@ -37,7 +37,8 @@ const article = require('./routes/article')
 const product = require('./routes/product')
 const category = require('./routes/category')
 const role = require('./routes/permission/role')
-const menu = require('./routes/permission/menu')
+const menu = require('./routes/permission/menu') // 菜单接口路由
+const managers = require('./routes/permission/admin') // 管理员接口路由
 const { connect } = require('./utils/connect')
 
 // error handler
@@ -79,6 +80,7 @@ router.use('/api/article', article.routes());
 router.use('/api/category', category.routes());  
 router.use('/api/permission/role', role.routes());  
 router.use('/api/permission/menu', menu.routes());  
+router.use('/api/permission/admin', managers.routes());  
 
 app.use(router.routes())
    .use(router.allowedMethods());
