@@ -15,6 +15,10 @@ const adminSchema = new Schema({
   email: {
     type: String,
   },
+  roleId: {
+    type: String,
+    required: true,
+  }
 })
 
 module.exports = mongoose.model('Managers', adminSchema, 'managers')

@@ -19,6 +19,10 @@ const roleSchema = new Schema({
   status:{
     type: Number,
     required: true,
+  }, // 0 禁用 1 启用
+  menuId:{
+    type: Array,
+    default: [],
   },
 })
 

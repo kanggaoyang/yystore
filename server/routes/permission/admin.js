@@ -18,7 +18,7 @@ router.get("/detail", async (ctx) => {
   await adminService.detail(ctx);
 });
 
-router.get("/update", async (ctx) => {
+router.post("/update", async (ctx) => {
   await adminService.update(ctx);
 });
 

@@ -1,5 +1,6 @@
 
-const roleModel = require('../../models/permission/role')
+const roleModel = require('../../models/permission/role');
+const { SUCCESS_CODE, ERROR_CODE } = require('../../utils/responseStatusCode');
 
 class RoleService {
   constructor(){}
@@ -8,7 +9,7 @@ class RoleService {
     try {
       let result = await roleModel.find({})
       ctx.body = {
-        code: 200,
+        code: SUCCESS_CODE,
         result
       }
     } catch (error) {
@@ -26,7 +27,7 @@ class RoleService {
       const role = new roleModel(req)
       await role.save();
       ctx.body = {
-        code: 200,
+        code: SUCCESS_CODE,
         result: role,
         message: '创建成功'
       }
@@ -46,7 +47,7 @@ class RoleService {
       message: "删除角色失败！",
     };
     let success = {
-      code: 200,
+      code: SUCCESS_CODE,
       message: "删除角色成功！",
     };
     try {
@@ -60,6 +61,44 @@ class RoleService {
     }
   }
 
+  async detail(ctx){
+    const id = ctx.query.id
+    try {
+      const res = await roleModel.findById({_id: id})
+      ctx.body = {
+        code: SUCCESS_CODE,
+        result: res,
+        message: `查询成功id：${id}！`
+      }
+    } catch (error) {
+      ctx.body = {
+        code: ERROR_CODE,
+        result: error,
+        message: `查询失败id：${id}！`
+      }
+    }
+  }
+
+  async update(ctx) {
+    const body = ctx.request.body
+    console.log(body)
+    try {
+      const res = await roleModel.findByIdAndUpdate({_id: body._id}, body)
+      console.log(res)
+      ctx.body = {
+        code: SUCCESS_CODE,
+        result: res,
+        message: `更新成功rolename：${body.rolename}！`
+      }
+    } catch (error) {
+      console.log(error)
+      ctx.body = {
+        code: ERROR_CODE,
+        result: error,
+        message: `更新失败id：${body.id}！`
+      }
+    }
+  }
 }
 
 module.exports = new RoleService()

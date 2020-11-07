@@ -39,6 +39,9 @@ const category = require('./routes/category')
 const role = require('./routes/permission/role')
 const menu = require('./routes/permission/menu') // 菜单接口路由
 const managers = require('./routes/permission/admin') // 管理员接口路由
+const authRole = require('./routes/permission/auth_role') // 设置路由权限
+
+
 const { connect } = require('./utils/connect')
 
 // error handler
@@ -81,6 +84,7 @@ router.use('/api/category', category.routes());
 router.use('/api/permission/role', role.routes());  
 router.use('/api/permission/menu', menu.routes());  
 router.use('/api/permission/admin', managers.routes());  
+router.use('/api/permission/auth_role', authRole.routes());  
 
 app.use(router.routes())
    .use(router.allowedMethods());

@@ -13,8 +13,15 @@ router.post("/delete", async (ctx) => {
   await roleService.remove(ctx)
 });
 
-// router.post("/update", async (ctx) => {
-//   await roleService.update(ctx)
-// });
+router.get("/detail", async (ctx) => {
+  await roleService.detail(ctx)
+});
 
+router.post("/update", async (ctx) => {
+  await roleService.update(ctx)
+});
+
+router.post("/setting", async (ctx) => {
+  await roleService.setting(ctx)
+});
 module.exports = router

@@ -4,6 +4,7 @@ const db = "mongodb://127.0.0.1/yystore"; // 服务器临时部署数据库
 // 导出一个方法
 exports.connect = () => {
   // 连接数据库
+  mongoose.set('useCreateIndex', true)
   mongoose.connect(
     db,
     { useNewUrlParser: true, useUnifiedTopology: true },
