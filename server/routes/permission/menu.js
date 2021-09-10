@@ -2,7 +2,7 @@ const menuService = require("../../service/permission/menu");
 const router = require("koa-router")();
 const tokenRequired = require("../../middlewares/tokenRequired")();
 
-router.get("/list", tokenRequired, async (ctx) => {
+router.get("/list", async (ctx) => {
   await menuService.list(ctx);
 });
 
